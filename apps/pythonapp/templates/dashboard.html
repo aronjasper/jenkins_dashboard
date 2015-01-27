@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <H1>My Dashboard</H1>
+  <table border=1 style="border-collapse: collapse">
+    <tr>
+      <th>Job Name</th>
+      <th>Status (Colour)</th>
+    </tr>
+
+    {% for job in jobs %}
+      <tr>
+        <td><a href="http://localhost:5000/{{job.name}}">{{job.name}}</a></td>
+        <td bgcolor="{{job.color}}">&nbsp;</td>
+      </tr>
+    {% endfor %}
+
+  </table>
+</body>
+</html>

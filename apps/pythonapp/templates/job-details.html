@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <title>Job Details</title>
+</head>
+<body>
+  <H1>{{details.displayName}}</H1>
+  <table border=1 style="border-collapse: collapse">
+
+    <tr>
+      <td>Status (Colour)</td>
+      <td bgcolor={{details.color}}>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Number of builds</td>
+      <td>{{details.builds[0].number}}</td>
+    </tr>
+    <tr>
+      <td>In Build Queue?</td>
+      <td>{{'Yes' if details.inQueue == True else 'No'}}</td>
+    </tr>
+    <tr>
+      <td>Health report</td>
+      <td>
+        <table border=1 style="border-collapse: collapse">
+          <tr>
+            <th>Description</th>
+            <th>Score</th>
+          </tr>
+
+          {% for check in details.healthReport %}
+            <tr>
+              <td>{{check.description}}</td>
+              <td>{{check.score}}%</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Last Completed Build</td>
+      <td>{{details.lastCompletedBuild.number}}</td>
+    </tr>
+    <tr>
+      <td>Last Successful Build</td>
+      <td>{{details.lastSuccessfulBuild.number if details.lastSuccessfulBuild.number != null else 'None'}}</td>
+    </tr>
+    <tr>
+      <td>Last Failed Build</td>
+      <td>{{details.lastFailedBuild.number if details.lastFailedBuild.number != null else 'None'}}</td>
+    </tr>
+    <tr>
+      <td>Last Stable Build</td>
+      <td>{{details.lastStableBuild.number if details.lastStableBuild.number != null else 'None'}}</td>
+    </tr>
+    <tr>
+      <td>Last Unstable Build</td>
+      <td>{{details.lastUnstableBuild.number if details.lastUnstableBuild.number != null else 'None'}}</td>
+    </tr>
+
+  </table>
+  <br/>
+  <a href='/'><< Back</a>
+</body>
+</html>
